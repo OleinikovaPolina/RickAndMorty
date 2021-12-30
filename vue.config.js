@@ -8,6 +8,7 @@ module.exports = {
         msTileColor: '#000000',
         appleMobileWebAppCapable: 'yes',
         appleMobileWebAppStatusBarStyle: 'black',
+        start_url: '',
         icons: [
             {
                 src: "favicon.ico",
