@@ -43,7 +43,7 @@ const routes = [
 
 const router = new VueRouter({
     mode: 'history',
-    base: './',
+    base: './RickAndMorty/dist/',
     routes
 })
 
