@@ -1,113 +1,116 @@
 <template>
   <v-container>
-  <template v-if="load">
-    <v-row class="ma-0">
-      <v-col
-          cols="12"
-          md="4"
-      >
-        <v-card class="mx-auto my-4 fill-height">
-          <v-img src="../assets/3614168-total_rickall.jpg"></v-img>
-          <router-link :to="'/characters'" class="black--text text-decoration-none ">
-            <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">Characters</v-card-title>
-          </router-link>
-          <v-card-text class="pt-0">
-            <v-row class="mt-4 mx-0">
-              <div class=" text-subtitle-2">
-                All number:&nbsp;
-              </div>
-              <div> {{ charactersInfo.count }}</div>
-            </v-row>
-          </v-card-text>
-          <v-list shaped>
-            <v-list-item
-                class="pl-2"
-                v-for="item in items"
-                :key="item.text"
-                :class="'grey lighten-'+item.number"
-            >
-              <v-list-item-avatar class="mr-1">
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-avatar>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.text"></v-list-item-title>
-                <v-list-item-subtitle v-text="item.text2"></v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-card>
-      </v-col>
-      <v-col
-          cols="12"
-          md="4"
-      >
-        <v-card class="mx-auto my-4 fill-height">
-          <v-img src="../assets/Multiverse.jpg"></v-img>
-          <router-link :to="'/locations'" class="black--text text-decoration-none ">
-            <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">Locations</v-card-title>
-          </router-link>
-          <v-card-text class="pt-0">
-            <v-row class="mt-4 mx-0">
-              <div class=" text-subtitle-2">
-                All number:&nbsp;
-              </div>
-              <div> {{ locationsInfo.count }}</div>
-            </v-row>
-          </v-card-text>
-          <v-list shaped>
-            <v-list-item
-                class="pl-2"
-                v-for="item in itemsLocations"
-                :key="item.text"
-                :class="'grey lighten-'+item.number"
-            >
-              <v-list-item-avatar  class="mr-1">
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-avatar>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.text"></v-list-item-title>
-                <v-list-item-subtitle v-text="item.text2"></v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-card>
-      </v-col>
-      <v-col
-          cols="12"
-          md="4"
-      >
-        <v-card class="mx-auto my-4 fill-height">
-          <v-img src="../assets/rick.jpg"></v-img>
-          <router-link :to="'/episodes'" class="black--text text-decoration-none ">
-            <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">Episodes</v-card-title>
-          </router-link>
-          <v-card-text class="pt-0">
-            <v-row class="mt-4 mx-0">
-              <div class=" text-subtitle-2">
-                All number:&nbsp;
-              </div>
-              <div> {{ episodesInfo.count }}</div>
-            </v-row>
-          </v-card-text>
-          <v-list shaped>
-            <v-list-item
-                class="pl-2"
-                v-for="item in itemsEpisodes"
-                :key="item.text"
-                :class="'grey lighten-'+item.number"
-            >
-              <v-list-item-avatar  class="mr-1">
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item-avatar>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.text"></v-list-item-title>
-                <v-list-item-subtitle v-text="item.text2"></v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-card>
-      </v-col>
-    </v-row>
+    <template v-if="load">
+      <v-row class="ma-0">
+        <v-col
+            cols="12"
+            md="4"
+        >
+          <v-card class="mx-auto my-4 fill-height">
+            <v-img src="../assets/3614168-total_rickall.jpg"
+                   :height="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm?'auto':'15vw'"></v-img>
+            <router-link :to="'/characters'" class="black--text text-decoration-none ">
+              <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">Characters</v-card-title>
+            </router-link>
+            <v-card-text class="pt-0">
+              <v-row class="mt-4 mx-0">
+                <div class=" text-subtitle-2">
+                  All number:&nbsp;
+                </div>
+                <div> {{ charactersInfo.count }}</div>
+              </v-row>
+            </v-card-text>
+            <v-list shaped>
+              <v-list-item
+                  class="pl-2"
+                  v-for="item in items"
+                  :key="item.text"
+                  :class="'grey lighten-'+item.number"
+              >
+                <v-list-item-avatar class="mr-1">
+                  <v-icon>{{ item.icon }}</v-icon>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.text"></v-list-item-title>
+                  <v-list-item-subtitle v-text="item.text2"></v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-card>
+        </v-col>
+        <v-col
+            cols="12"
+            md="4"
+        >
+          <v-card class="mx-auto my-4 fill-height">
+            <v-img src="../assets/Multiverse.jpg"
+                   :height="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm?'auto':'15vw'"></v-img>
+            <router-link :to="'/locations'" class="black--text text-decoration-none ">
+              <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">Locations</v-card-title>
+            </router-link>
+            <v-card-text class="pt-0">
+              <v-row class="mt-4 mx-0">
+                <div class=" text-subtitle-2">
+                  All number:&nbsp;
+                </div>
+                <div> {{ locationsInfo.count }}</div>
+              </v-row>
+            </v-card-text>
+            <v-list shaped>
+              <v-list-item
+                  class="pl-2"
+                  v-for="item in itemsLocations"
+                  :key="item.text"
+                  :class="'grey lighten-'+item.number"
+              >
+                <v-list-item-avatar class="mr-1">
+                  <v-icon>{{ item.icon }}</v-icon>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.text"></v-list-item-title>
+                  <v-list-item-subtitle v-text="item.text2"></v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-card>
+        </v-col>
+        <v-col
+            cols="12"
+            md="4"
+        >
+          <v-card class="mx-auto my-4 fill-height">
+            <v-img src="../assets/rick.jpg"
+                   :height="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm?'auto':'15vw'"></v-img>
+            <router-link :to="'/episodes'" class="black--text text-decoration-none ">
+              <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">Episodes</v-card-title>
+            </router-link>
+            <v-card-text class="pt-0">
+              <v-row class="mt-4 mx-0">
+                <div class=" text-subtitle-2">
+                  All number:&nbsp;
+                </div>
+                <div> {{ episodesInfo.count }}</div>
+              </v-row>
+            </v-card-text>
+            <v-list shaped>
+              <v-list-item
+                  class="pl-2"
+                  v-for="item in itemsEpisodes"
+                  :key="item.text"
+                  :class="'grey lighten-'+item.number"
+              >
+                <v-list-item-avatar class="mr-1">
+                  <v-icon>{{ item.icon }}</v-icon>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title v-text="item.text"></v-list-item-title>
+                  <v-list-item-subtitle v-text="item.text2"></v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-card>
+        </v-col>
+      </v-row>
     </template>
     <div v-else class="text-center pt-16">
       <v-progress-circular

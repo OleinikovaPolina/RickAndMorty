@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ac3bf373bd03cf666b00",
+    "revision": "f63854548d8206eb04f4",
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/css/app.d2b31ceb.css"
   },
   {
-    "revision": "2e9f142044bf2edea93a",
+    "revision": "bb800e070143a4f35eaf",
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/css/chunk-vendors.d0ee0f91.css"
   },
   {
@@ -20,16 +20,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/img/rick.82b8707f.jpg"
   },
   {
-    "revision": "ebb4d155f5d9473ee2b1787732d960ea",
+    "revision": "cd8fb21d0e70bb7369a9787473984a1d",
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/index.html"
   },
   {
-    "revision": "ac3bf373bd03cf666b00",
-    "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/js/app.aaa710a1.js"
+    "revision": "f63854548d8206eb04f4",
+    "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/js/app.2ca89b19.js"
   },
   {
-    "revision": "2e9f142044bf2edea93a",
-    "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/js/chunk-vendors.03341064.js"
+    "revision": "bb800e070143a4f35eaf",
+    "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/js/chunk-vendors.32c12df4.js"
   },
   {
     "revision": "298c4633bdfab5ee686a4c7057fffa3d",
@@ -40,7 +40,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/logo512.png"
   },
   {
-    "revision": "2b62cbe979eabb39b5081052e5210ed6",
+    "revision": "b55d0558ad49ba1895e7c586211dd12e",
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/manifest.json"
   },
   {

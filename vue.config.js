@@ -1,8 +1,7 @@
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
         ? 'https://oleinikovapolina.github.io/RickAndMorty/dist/'
-        : '/'
-    ,
+        : '/',
     transpileDependencies: [
         'vuetify'
     ],
@@ -29,7 +28,6 @@ module.exports = {
                 "sizes": "512x512"
             }],
         manifestOptions: {
-            start_url: '/RickAndMorty/dist/',
             background_color: '#fff'
         }
     }
