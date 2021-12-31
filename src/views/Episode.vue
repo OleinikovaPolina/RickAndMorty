@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <template v-if="load">
       <Breadcrumbs :items="items"></Breadcrumbs>
       <v-card class="mx-auto mb-4">
@@ -61,7 +61,7 @@
           indeterminate
       ></v-progress-circular>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
