@@ -10,14 +10,16 @@
     </v-app-bar>
 
     <v-main>
-      <v-container>
+      <v-container fluid>
         <router-view></router-view>
       </v-container>
+      <v-footer padless style="opacity: 0">
+        <Footer :links="links"/>
+      </v-footer>
+      <v-footer padless absolute bottom>
+        <Footer :links="links"/>
+      </v-footer>
     </v-main>
-
-    <v-footer padless app style="position: absolute">
-      <Footer :links="links"/>
-    </v-footer>
   </v-app>
 </template>
 
@@ -40,3 +42,8 @@ export default {
   },
 }
 </script>
+<style>
+.zindex {
+  z-index: 6;
+}
+</style>
