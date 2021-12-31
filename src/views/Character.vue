@@ -20,7 +20,7 @@
               cols="12"
               class="pb-0 pa-md-0 "
               sm="8">
-            <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">
+            <v-card-title class="pb-1" style="line-height: 1.35rem;word-break: normal;">
               {{ character.name }}
             </v-card-title>
 
@@ -43,8 +43,8 @@
               <div class="mt-4 text-subtitle-2">
                 Origin:
               </div>
-              <router-link  v-if="character.origin.url!==''"
-                            class="text-decoration-none text--primary"
+              <router-link v-if="character.origin.url!==''"
+                           class="text-decoration-none text--primary"
                            :to="'/location/'+character.origin.url.split('/')[character.origin.url.split('/').length-1]">
                 <div class="text--primary">{{ character.origin.name }}</div>
               </router-link>
@@ -53,8 +53,8 @@
               <div class="mt-4 text-subtitle-2">
                 Last known location:
               </div>
-              <router-link  v-if="character.location.url!==''"
-                            class="text-decoration-none text--primary"
+              <router-link v-if="character.location.url!==''"
+                           class="text-decoration-none text--primary"
                            :to="'/location/'+character.location.url.split('/')[character.location.url.split('/').length-1]">
                 <div class="text--primary">{{ character.location.name }}</div>
               </router-link>
@@ -70,8 +70,8 @@
             </v-card-text>
           </v-col>
         </v-row>
-        <div class="pt-0 pa-4 pt-sm-4">
-          <div class="mt-4 text-subtitle-2">
+        <div class="pa-8 pt-0 pt-sm-4">
+          <div class=" text-subtitle-2">
             Episodes:
           </div>
           <v-chip-group

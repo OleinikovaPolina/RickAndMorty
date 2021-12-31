@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto my-4 fill-height">
     <router-link :to="'/episode/'+episode.id" class="black--text text-decoration-none ">
-      <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">{{ episode.name }}</v-card-title>
+      <v-card-title class="pb-1" style="line-height: 1.35rem;word-break: normal;">{{ episode.name }}</v-card-title>
     </router-link>
     <v-card-text class="pt-0">
       <v-row class="mt-4 mx-0">

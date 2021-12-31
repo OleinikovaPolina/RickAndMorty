@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "32a05707919adc168934",
+    "revision": "b89686b0daf6a1b0c06c",
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/css/app.d2b31ceb.css"
   },
   {
@@ -20,12 +20,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/img/rick.82b8707f.jpg"
   },
   {
-    "revision": "cc20e93099c1b14ed8a2ba33b640144b",
+    "revision": "1b6150aa9aa337115c264d4ebf3ce40f",
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/index.html"
   },
   {
-    "revision": "32a05707919adc168934",
-    "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/js/app.05d41846.js"
+    "revision": "b89686b0daf6a1b0c06c",
+    "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/js/app.870e8212.js"
   },
   {
     "revision": "bb800e070143a4f35eaf",

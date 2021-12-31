@@ -10,10 +10,10 @@
             <v-img src="../assets/3614168-total_rickall.jpg"
                    :height="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm?'auto':'15vw'"></v-img>
             <router-link :to="'/characters'" class="black--text text-decoration-none ">
-              <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">Characters</v-card-title>
+              <v-card-title class="pb-1">Characters</v-card-title>
             </router-link>
             <v-card-text class="pt-0">
-              <v-row class="mt-4 mx-0">
+              <v-row class="mt-1 mx-0">
                 <div class=" text-subtitle-2">
                   All number:&nbsp;
                 </div>
@@ -46,10 +46,10 @@
             <v-img src="../assets/Multiverse.jpg"
                    :height="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm?'auto':'15vw'"></v-img>
             <router-link :to="'/locations'" class="black--text text-decoration-none ">
-              <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">Locations</v-card-title>
+              <v-card-title class="pb-1">Locations</v-card-title>
             </router-link>
             <v-card-text class="pt-0">
-              <v-row class="mt-4 mx-0">
+              <v-row class="mt-1 mx-0">
                 <div class=" text-subtitle-2">
                   All number:&nbsp;
                 </div>
@@ -82,10 +82,10 @@
             <v-img src="../assets/rick.jpg"
                    :height="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm?'auto':'15vw'"></v-img>
             <router-link :to="'/episodes'" class="black--text text-decoration-none ">
-              <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">Episodes</v-card-title>
+              <v-card-title class="pb-1">Episodes</v-card-title>
             </router-link>
             <v-card-text class="pt-0">
-              <v-row class="mt-4 mx-0">
+              <v-row class="mt-1 mx-0">
                 <div class=" text-subtitle-2">
                   All number:&nbsp;
                 </div>

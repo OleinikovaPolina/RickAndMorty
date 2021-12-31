@@ -3,7 +3,7 @@
     <template v-if="load">
       <Breadcrumbs :items="items"></Breadcrumbs>
       <v-card class="mx-auto mb-4">
-        <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">{{ episode.name }}</v-card-title>
+        <v-card-title class="pb-1" style="line-height: 1.35rem;word-break: normal;">{{ episode.name }}</v-card-title>
         <v-card-text class="pt-0 text--primary">
 
           <div class="mt-4 text-subtitle-2">

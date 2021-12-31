@@ -3,7 +3,7 @@
       class="mx-auto my-4 fill-height"
   >
     <div class="fill-height" :class="$vuetify.breakpoint.xs?'':'d-flex flex-no-wrap'">
-      <v-avatar style="height: 100%"
+      <v-avatar :style="{height:$vuetify.breakpoint.xs?'auto':'100%'}"
                 :size="$vuetify.breakpoint.xs?'100%':$vuetify.breakpoint.sm?'50%':'15vw'"
                 tile
       >
@@ -11,7 +11,7 @@
       </v-avatar>
       <div>
         <router-link :to="'/character/'+character.id" class="black--text text-decoration-none ">
-          <v-card-title class="pb-1" style="line-height: 1.1rem;word-break: normal;">{{ character.name }}</v-card-title>
+          <v-card-title class="pb-1" style="line-height: 1.35rem;word-break: normal;">{{ character.name }}</v-card-title>
         </router-link>
         <v-card-text class="pt-0">
           <v-row class="ma-0">
