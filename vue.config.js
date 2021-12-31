@@ -29,7 +29,7 @@ module.exports = {
                 "sizes": "512x512"
             }],
         manifestOptions: {
-            start_url: 'https://oleinikovapolina.github.io/RickAndMorty/dist/',
+            start_url: '/RickAndMorty/dist/',
             background_color: '#fff'
         }
     }
