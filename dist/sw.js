@@ -1,4 +1,4 @@
-importScripts("https://oleinikovapolina.github.io/RickAndMorty/dist/precache-manifest.74fe62b5145c051ed3399e5e73c74001.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("https://oleinikovapolina.github.io/RickAndMorty/dist/precache-manifest.fabfe7b9bf98940dffd7dad256566f07.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 const dynamicCacheName = 'dynamic-cache-v1';
 
