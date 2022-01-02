@@ -113,7 +113,8 @@ export default {
           this.locations = res.data.results
           this.locationsInfo = res.data.info
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err,err.response)
           this.locations = []
           this.locationsInfo = {}
         })
