@@ -112,7 +112,11 @@ export default {
         .then(res => {
           this.locations = res.data.results
           this.locationsInfo = res.data.info
-        });
+        })
+        .catch(() => {
+          this.locations = []
+          this.locationsInfo = {}
+        })
     this.load = true
   },
   methods: {
@@ -134,8 +138,7 @@ export default {
             this.locations = res.data.results
             this.locationsInfo = res.data.info
           })
-          .catch((err) => {
-            console.log(err)
+          .catch(() => {
             this.locations = []
             this.locationsInfo = {}
           })

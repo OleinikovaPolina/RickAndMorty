@@ -73,7 +73,11 @@ export default {
         .then(res => {
           this.episodes = res.data.results
           this.episodesInfo = res.data.info
-        });
+        })
+        .catch(() => {
+          this.episodes = []
+          this.episodesInfo = {}
+        })
     this.load = true
   },
   methods: {

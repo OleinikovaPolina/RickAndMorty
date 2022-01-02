@@ -89,14 +89,16 @@ export default {
           .get('https://rickandmortyapi.com/api/episode/?page=' + i)
           .then(res => {
             this.episodes = this.episodes.concat(res.data.results)
-          });
+          })
+          .catch(() => {})
     }
     await axios
         .get('https://rickandmortyapi.com/api/character')
         .then(res => {
           this.characters = res.data.results
           this.characterInfo = res.data.info
-        });
+        })
+        .catch(() => {})
     this.load = true
   },
   watch: {
@@ -116,7 +118,8 @@ export default {
             .then(res => {
               this.characters = res.data.results
 
-            });
+            })
+            .catch(() => {})
         this.load = true
       },
       deep: true

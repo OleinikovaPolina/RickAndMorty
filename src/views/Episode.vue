@@ -94,7 +94,8 @@ export default {
               .get(this.episode.characters[i])
               .then(res => {
                 this.episode.characters[i] = {url: this.episode.characters[i], name: res.data.name, id: res.data.id}
-              });
+              })
+              .catch(() => {})
         }
         this.loadCharacters = true
       }
@@ -110,7 +111,12 @@ export default {
             disabled: true,
             href: '/episode' + this.$route.params.id,
           })
-        });
+        })
+        .catch((err) => {
+          if (err.response.status === 404) {
+            this.err = true
+          }
+        })
     this.load = true
   }
 }

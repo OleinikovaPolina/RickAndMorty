@@ -88,6 +88,9 @@
         </div>
       </v-card>
     </template>
+    <div v-else-if="err">
+      <NotFound></NotFound>
+    </div>
     <div v-else class="text-center pt-16">
       <v-progress-circular
           indeterminate
@@ -99,13 +102,15 @@
 <script>
 import axios from "axios"
 import Breadcrumbs from "../components/Breadcrumbs"
+import NotFound from "../components/NotFound";
 
 export default {
   name: "Character",
-  components: {Breadcrumbs},
+  components: {NotFound, Breadcrumbs},
   data: () => ({
     load: false,
     character: {},
+    err:false,
     items: [
       {
         text: 'Characters',
@@ -121,13 +126,15 @@ export default {
         .then(res => {
           this.episodes = res.data.results
           t = res.data.info.pages
-        });
+        })
+        .catch(() => {})
     for (let i = 2; i <= t; i++) {
       await axios
           .get('https://rickandmortyapi.com/api/episode/?page=' + i)
           .then(res => {
             this.episodes = this.episodes.concat(res.data.results)
-          });
+          })
+          .catch(() => {})
     }
     await axios
         .get('https://rickandmortyapi.com/api/character/' + this.$route.params.id)
@@ -138,6 +145,11 @@ export default {
             disabled: true,
             href: '/character/' + this.$route.params.id,
           })
+        })
+        .catch((err) => {
+          if (err.response.status === 404) {
+            this.err = true
+          }
         })
     this.load = true
   }

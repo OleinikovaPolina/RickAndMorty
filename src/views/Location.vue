@@ -94,7 +94,8 @@ export default {
               .get(this.location.residents[i])
               .then(res => {
                 this.location.residents[i] = {url: this.location.residents[i], name: res.data.name, id: res.data.id}
-              });
+              })
+              .catch(() => {})
         }
         this.loadResidents = true
       }
@@ -110,7 +111,12 @@ export default {
             disabled: true,
             href: '/location' + this.$route.params.id,
           })
-        });
+        })
+        .catch((err) => {
+          if (err.response.status === 404) {
+            this.err = true
+          }
+        })
 
     this.load = true
   }

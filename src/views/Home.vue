@@ -167,7 +167,8 @@ export default {
             } else {
               this.itemsLocations[i - 1].text2 = res.data.info.count
             }
-          });
+          })
+          .catch(() => {})
     }
     for (let i = 0; i < this.characters.length; i++) {
       await axios
@@ -178,13 +179,15 @@ export default {
             } else {
               this.items[i - 1].text2 = res.data.info.count
             }
-          });
+          })
+          .catch(() => {})
     }
     await axios
         .get('https://rickandmortyapi.com/api/episode')
         .then(res => {
           this.episodesInfo = res.data.info
-        });
+        })
+        .catch(() => {})
     this.load = true
   },
 }
