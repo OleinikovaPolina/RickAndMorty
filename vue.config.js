@@ -12,7 +12,8 @@ module.exports = {
         appleMobileWebAppCapable: 'yes',
         appleMobileWebAppStatusBarStyle: 'black',
         manifestOptions: {
-            start_url: 'https://oleinikovapolina.github.io/RickAndMorty/dist/',
+            start_url: "./",
+            scope: ".",
             background_color: '#fff'
         }
     }
