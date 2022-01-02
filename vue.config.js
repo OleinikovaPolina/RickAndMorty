@@ -15,6 +15,10 @@ module.exports = {
             start_url: "./",
             scope: ".",
             background_color: '#fff'
+        },
+        workboxPluginMode: 'InjectManifest',
+        workboxOptions: {
+            swSrc: 'public/sw.js',
         }
     }
 }
