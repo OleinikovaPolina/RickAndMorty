@@ -27,7 +27,6 @@
                 fab
                 dark
                 x-small
-                color="primary"
             >
               <v-icon dark>
                 {{ showResidents ? 'mdi-minus' : 'mdi-plus' }}

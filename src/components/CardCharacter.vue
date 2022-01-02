@@ -10,13 +10,19 @@
         <v-img :src="character.image"></v-img>
       </v-avatar>
       <div>
-        <router-link :to="'/character/'+character.id" class="black--text text-decoration-none ">
-          <v-card-title class="pb-1" style="line-height: 1.35rem;word-break: normal;">{{ character.name }}</v-card-title>
+        <router-link :to="'/character/'+character.id"
+                     :class="$vuetify.theme.dark?'white--text':'black--text'"
+                     class="text-decoration-none ">
+          <v-card-title class="pb-1"
+                        style="line-height: 1.35rem;word-break: normal;">
+            {{ character.name }}
+          </v-card-title>
         </router-link>
         <v-card-text class="pt-0">
           <v-row class="ma-0">
             <v-icon x-small
-                    :style="{ color: character.status==='Alive' ? 'green' : character.status==='unknown' ? '' : 'red' }">
+                    :style="{ color: character.status==='Alive' ? 'green'
+                    : character.status==='unknown' ? '' : 'red' }">
               mdi-circle
             </v-icon>
             <div class="ms-1">
@@ -29,7 +35,8 @@
           </div>
           <router-link v-if="character.location.url!==''"
                        class="text-decoration-none text--primary"
-                       :to="'/location/'+character.location.url.split('/')[character.location.url.split('/').length-1]">
+                       :to="'/location/'+
+                       character.location.url.split('/')[character.location.url.split('/').length-1]">
             <div class="text--primary">{{ character.location.name }}</div>
           </router-link>
           <div class="text--primary" v-else>{{ character.location.name }}</div>
@@ -43,7 +50,6 @@
           </router-link>
         </v-card-text>
       </div>
-
     </div>
   </v-card>
 </template>

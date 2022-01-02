@@ -4,8 +4,8 @@
       <v-breadcrumbs-item
           :to="item.href"
           :disabled="item.disabled"
-      >
-        {{ item.text }}
+      ><span :style="`color: ${!item.disabled? $vuetify.theme.dark?'white':'black':''}`">
+        {{ item.text }}</span>
       </v-breadcrumbs-item>
     </template>
   </v-breadcrumbs>
@@ -14,6 +14,6 @@
 <script>
 export default {
   name: "Breadcrumbs",
-  props:['items']
+  props: ['items']
 }
 </script>

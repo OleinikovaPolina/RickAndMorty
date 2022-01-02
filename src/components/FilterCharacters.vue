@@ -14,6 +14,7 @@
               hide-details="auto"
               clearable
               clear-icon="mdi-close-circle"
+              :color="$vuetify.theme.dark?'white':'black'"
           >
             <v-icon
                 slot="append"
@@ -36,6 +37,7 @@
               hide-details="auto"
               clearable
               clear-icon="mdi-close-circle"
+              :color="$vuetify.theme.dark?'white':'black'"
           ></v-autocomplete>
         </v-col>
 
@@ -53,6 +55,7 @@
               hide-details="auto"
               clearable
               clear-icon="mdi-close-circle"
+              :color="$vuetify.theme.dark?'white':'black'"
           ></v-autocomplete>
         </v-col>
 
@@ -70,6 +73,7 @@
               hide-details="auto"
               clearable
               clear-icon="mdi-close-circle"
+              :color="$vuetify.theme.dark?'white':'black'"
           ></v-autocomplete>
         </v-col>
       </v-row>

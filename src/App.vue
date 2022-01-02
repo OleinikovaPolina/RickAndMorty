@@ -7,6 +7,10 @@
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Rick and Morty</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon @click="changeTheme">
+        <v-icon>{{ $vuetify.theme.dark ? 'mdi-moon-waning-crescent' : 'mdi-white-balance-sunny' }}</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-main>
@@ -40,10 +44,10 @@ export default {
       drawer: null
     }
   },
+  methods: {
+    changeTheme() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    }
+  }
 }
 </script>
-<style>
-.zindex {
-  z-index: 6;
-}
-</style>

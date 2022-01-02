@@ -9,7 +9,9 @@
           <v-card class="mx-auto my-4 fill-height">
             <v-img src="../assets/3614168-total_rickall.jpg"
                    :height="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm?'auto':'15vw'"></v-img>
-            <router-link :to="'/characters'" class="black--text text-decoration-none ">
+            <router-link :to="'/characters'"
+                         class="text-decoration-none"
+                         :class="$vuetify.theme.dark?'white--text':'black--text'">
               <v-card-title class="pb-1">Characters</v-card-title>
             </router-link>
             <v-card-text class="pt-0">
@@ -25,7 +27,7 @@
                   class="pl-2"
                   v-for="item in items"
                   :key="item.text"
-                  :class="'grey lighten-'+item.number"
+                  :class="`grey ${!$vuetify.theme.dark?'lighten':'darken'}-${item.number}`"
               >
                 <v-list-item-avatar class="mr-1">
                   <v-icon>{{ item.icon }}</v-icon>
@@ -45,7 +47,9 @@
           <v-card class="mx-auto my-4 fill-height">
             <v-img src="../assets/Multiverse.jpg"
                    :height="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm?'auto':'15vw'"></v-img>
-            <router-link :to="'/locations'" class="black--text text-decoration-none ">
+            <router-link :to="'/locations'"
+                         class="text-decoration-none"
+                         :class="$vuetify.theme.dark?'white--text':'black--text'">
               <v-card-title class="pb-1">Locations</v-card-title>
             </router-link>
             <v-card-text class="pt-0">
@@ -61,7 +65,7 @@
                   class="pl-2"
                   v-for="item in itemsLocations"
                   :key="item.text"
-                  :class="'grey lighten-'+item.number"
+                  :class="`grey ${!$vuetify.theme.dark?'lighten':'darken'}-${item.number}`"
               >
                 <v-list-item-avatar class="mr-1">
                   <v-icon>{{ item.icon }}</v-icon>
@@ -81,7 +85,9 @@
           <v-card class="mx-auto my-4 fill-height">
             <v-img src="../assets/rick.jpg"
                    :height="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm?'auto':'15vw'"></v-img>
-            <router-link :to="'/episodes'" class="black--text text-decoration-none ">
+            <router-link :to="'/episodes'"
+                         class="text-decoration-none"
+                         :class="$vuetify.theme.dark?'white--text':'black--text'">
               <v-card-title class="pb-1">Episodes</v-card-title>
             </router-link>
             <v-card-text class="pt-0">
@@ -97,7 +103,7 @@
                   class="pl-2"
                   v-for="item in itemsEpisodes"
                   :key="item.text"
-                  :class="'grey lighten-'+item.number"
+                  :class="`grey ${!$vuetify.theme.dark?'lighten':'darken'}-${item.number}`"
               >
                 <v-list-item-avatar class="mr-1">
                   <v-icon>{{ item.icon }}</v-icon>

@@ -14,6 +14,7 @@
             hide-details="auto"
             clearable
             clear-icon="mdi-close-circle"
+            :color="$vuetify.theme.dark?'white':'black'"
         ></v-text-field>
       </v-col>
       <v-col
@@ -29,6 +30,7 @@
             hide-details="auto"
             clearable
             clear-icon="mdi-close-circle"
+            :color="$vuetify.theme.dark?'white':'black'"
         >
         </v-text-field>
       </v-col>
@@ -45,6 +47,7 @@
             hide-details="auto"
             clearable
             clear-icon="mdi-close-circle"
+            :color="$vuetify.theme.dark?'white':'black'"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -64,11 +67,12 @@
             v-model="page"
             :length="locationsInfo.pages"
             :total-visible="7"
+            color="grey"
         ></v-pagination>
       </div>
     </template>
     <template v-else-if="locations.length===0 && load">
-      <div>not found</div>
+      <NotFound></NotFound>
     </template>
     <div v-else class="text-center pt-16">
       <v-progress-circular
@@ -81,10 +85,11 @@
 <script>
 import axios from "axios";
 import CardLocation from "../components/CardLocation";
+import NotFound from "../components/NotFound";
 
 export default {
   name: "Location",
-  components: {CardLocation},
+  components: {NotFound, CardLocation},
   data: () => ({
     locations: [],
     locationsInfo: {},

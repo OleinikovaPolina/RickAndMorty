@@ -1,6 +1,8 @@
 <template>
   <v-card class="mx-auto my-4 fill-height">
-    <router-link :to="'/episode/'+episode.id" class="black--text text-decoration-none ">
+    <router-link :to="'/episode/'+episode.id"
+                 class="text-decoration-none"
+                 :class="$vuetify.theme.dark?'white--text':'black--text'">
       <v-card-title class="pb-1" style="line-height: 1.35rem;word-break: normal;">{{ episode.name }}</v-card-title>
     </router-link>
     <v-card-text class="pt-0">

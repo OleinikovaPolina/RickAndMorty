@@ -18,11 +18,12 @@
               v-model="page"
               :length="characterInfo.pages"
               :total-visible="7"
+              color="grey"
           ></v-pagination>
         </div>
       </template>
       <template v-else-if="characters.length===0 && load">
-        <div>not found</div>
+        <NotFound></NotFound>
       </template>
       <div v-else class="text-center pt-16">
         <v-progress-circular
@@ -37,10 +38,11 @@
 import CardCharacter from "../components/CardCharacter"
 import FilterCharacters from "../components/FilterCharacters";
 import axios from "axios"
+import NotFound from "../components/NotFound";
 
 export default {
   name: "Characters",
-  components: {CardCharacter, FilterCharacters},
+  components: {NotFound, CardCharacter, FilterCharacters},
   data: () => ({
     characters: [],
     characterInfo: {},
