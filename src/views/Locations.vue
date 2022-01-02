@@ -114,7 +114,7 @@ export default {
           this.locationsInfo = res.data.info
         })
         .catch((err) => {
-          console.log(err,err.response)
+          console.log(err, err.response, err == "Network Error", err === "Network Error")
           this.locations = []
           this.locationsInfo = {}
         })
