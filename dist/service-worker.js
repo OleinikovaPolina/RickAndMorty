@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "https://oleinikovapolina.github.io/RickAndMorty/dist/precache-manifest.64cd77f0ba2c12f921f32e7446732718.js"
+  "https://oleinikovapolina.github.io/RickAndMorty/dist/precache-manifest.3f21066c8bcbd978526cac6d874b264d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "rick"});
