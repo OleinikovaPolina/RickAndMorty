@@ -1,9 +1,5 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-importScripts(
-    "https://oleinikovapolina.github.io/RickAndMorty/dist/precache-manifest.d242ccd10ef0c301bac4750daecafcff.js"
-);
-
 workbox.core.setCacheNameDetails({prefix: "rick"});
 
 self.addEventListener('message', (event) => {
