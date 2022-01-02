@@ -12,6 +12,7 @@ module.exports = {
         appleMobileWebAppCapable: 'yes',
         appleMobileWebAppStatusBarStyle: 'black',
         manifestOptions: {
+            start_url: '/RickAndMorty/dist/',
             background_color: '#fff'
         }
     }
