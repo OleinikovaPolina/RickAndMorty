@@ -1,10 +1,10 @@
 <template>
   <v-container>
-    <v-row class="ma-0">
+    <v-row class="ma-0 align-stretch">
       <v-col
           cols="12"
-          sm="4"
-          class="px-0 pr-sm-3"
+          sm="3"
+          class="px-0 pr-sm-3 py-sm-0"
       >
         <v-text-field
             v-model="name"
@@ -19,8 +19,8 @@
       </v-col>
       <v-col
           cols="12"
-          sm="4"
-          class="px-0 px-sm-3"
+          sm="3"
+          class="px-0 px-sm-3 py-sm-0"
       >
         <v-text-field
             v-model="type"
@@ -36,8 +36,8 @@
       </v-col>
       <v-col
           cols="12"
-          sm="4"
-          class="px-0 pl-sm-3"
+          sm="3"
+          class="px-0 px-sm-3 py-sm-0"
       >
         <v-text-field
             v-model="dimension"
@@ -49,6 +49,17 @@
             clear-icon="mdi-close-circle"
             :color="$vuetify.theme.dark?'white':'black'"
         ></v-text-field>
+      </v-col>
+      <v-col
+          cols="12"
+          sm="3"
+          class="px-0 pl-sm-3 py-sm-0"
+      >
+        <v-btn @click="change(1)"
+               :height="$vuetify.breakpoint.xs?'':'100%'"
+               width="100%">
+          Применить
+        </v-btn>
       </v-col>
     </v-row>
     <template v-if="locations.length>0 && load">
@@ -100,36 +111,19 @@ export default {
     dimension: null
   }),
   async mounted() {
-    await axios
-        .get('https://rickandmortyapi.com/api/location', {
-          params: {
-            page: this.page,
-            name: this.name,
-            type: this.type,
-            dimension: this.dimension
-          }
-        })
-        .then(res => {
-          this.locations = res.data.results
-          this.locationsInfo = res.data.info
-        })
-        .catch((err) => {
-          console.log(err, err.response, err == "Network Error", err === "Network Error")
-          this.locations = []
-          this.locationsInfo = {}
-        })
-    this.load = true
+    this.page = parseInt(this.$route.query.page) || 1
+    this.name = this.$route.query.name || null
+    this.type = this.$route.query.type || null
+    this.dimension = this.$route.query.dimension || null
+    await this.getLocations()
   },
   methods: {
-    async getLocations(active = {}) {
-      Object.keys(active).forEach(x => {
-        this[x] = active[x]
-      })
+    async getLocations(page = this.page) {
       this.load = false
       await axios
           .get('https://rickandmortyapi.com/api/location', {
             params: {
-              page: this.page,
+              page: page,
               name: this.name,
               type: this.type,
               dimension: this.dimension
@@ -144,35 +138,39 @@ export default {
             this.locationsInfo = {}
           })
       this.load = true
-    }
+    },
+    async change(page = this.page) {
+      this.$router
+          .push({
+            query: {
+              ...this.$route.query,
+              page: page,
+              name: this.name || undefined,
+              type: this.type || undefined,
+              dimension: this.dimension || undefined
+            }
+          })
+          .catch(() => {
+          });
+      await this.getLocations()
+    },
   },
   watch: {
-    page: {
-      async handler() {
-        await this.getLocations()
-      },
-      deep: true
+    async page() {
+      this.$router
+          .push({query: {...this.$route.query, page: this.page}})
+          .catch(() => {
+          });
+      await this.getLocations()
     },
-    name: {
-      async handler() {
-        this.page = 1
+    async $route(to) {
+      this.name = this.$route.query.name || null
+      this.type = this.$route.query.type || null
+      this.dimension = this.$route.query.dimension || null
+      if (this.page === parseInt(to.query.page) || (this.page === 1 && !parseInt(to.query.page))) {
         await this.getLocations()
-      },
-      deep: true
-    },
-    type: {
-      async handler() {
-        this.page = 1
-        await this.getLocations()
-      },
-      deep: true
-    },
-    dimension: {
-      async handler() {
-        this.page = 1
-        await this.getLocations()
-      },
-      deep: true
+      }
+      this.page = parseInt(to.query.page) || 1
     }
   }
 }

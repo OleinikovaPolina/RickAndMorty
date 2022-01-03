@@ -1,7 +1,11 @@
 <template>
   <v-item-group>
     <v-container>
-      <FilterCharacters v-on:change="getCharacters"/>
+      <FilterCharacters v-on:change="activeFilter"
+                        :statusValue="status"
+                        :genderValue="gender"
+                        :speciesValue="species"
+                        :nameValue="name"/>
       <template v-if="characters.length>0 && load">
         <v-row>
           <v-col
@@ -47,7 +51,7 @@ export default {
     characters: [],
     characterInfo: {},
     episodes: [],
-    page: 1,
+    page: null,
     status: null,
     gender: null,
     species: null,
@@ -55,17 +59,18 @@ export default {
     load: false
   }),
   methods: {
-    async getCharacters(active) {
-      this.load = false
-      Object.keys(active).forEach(x => {
-        this[x] = active[x]
-      })
+    async getCharacters(page = this.page) {
       await axios
           .get('https://rickandmortyapi.com/api/character', {
-            params: Object.assign({page: 1}, active)
+            params: {
+              page: page,
+              species: this.species,
+              name: this.name,
+              gender: this.gender,
+              status: this.status
+            }
           })
           .then(res => {
-            this.page = 1
             this.characters = res.data.results
             this.characterInfo = res.data.info
           })
@@ -73,7 +78,20 @@ export default {
             this.characters = []
             this.characterInfo = {}
           });
+    },
+    async activeFilter(active) {
+      this.load = false
+      Object.keys(active).forEach(x => {
+        this[x] = active[x]
+      })
+      await this.getCharacters(1)
       this.load = true
+    },
+    update() {
+      this.status = this.$route.query.status || null
+      this.gender = this.$route.query.gender || null
+      this.species = this.$route.query.species || null
+      this.name = this.$route.query.name || null
     }
   },
   async mounted() {
@@ -90,39 +108,31 @@ export default {
           .then(res => {
             this.episodes = this.episodes.concat(res.data.results)
           })
-          .catch(() => {})
+          .catch(() => {
+          })
     }
-    await axios
-        .get('https://rickandmortyapi.com/api/character')
-        .then(res => {
-          this.characters = res.data.results
-          this.characterInfo = res.data.info
-        })
-        .catch(() => {})
+    this.update()
+    this.page = parseInt(this.$route.query.page) || 1
     this.load = true
   },
   watch: {
+    async $route(to) {
+      this.update()
+      if (this.page === parseInt(to.query.page) || (this.page === 1 && !parseInt(to.query.page))) {
+        await this.getCharacters()
+      }
+      this.page = parseInt(to.query.page) || 1;
+    },
     page: {
       async handler() {
         this.load = false
-        await axios
-            .get('https://rickandmortyapi.com/api/character', {
-              params: {
-                page: this.page,
-                species: this.species,
-                name: this.name,
-                gender: this.gender,
-                status: this.status
-              }
-            })
-            .then(res => {
-              this.characters = res.data.results
-
-            })
-            .catch(() => {})
+        this.$router
+            .push({query: {...this.$route.query, page: this.page}})
+            .catch(() => {
+            });
+        await this.getCharacters()
         this.load = true
-      },
-      deep: true
+      }
     }
   },
 }

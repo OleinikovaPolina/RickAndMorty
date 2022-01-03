@@ -12,17 +12,25 @@
         <div class=" text-subtitle-2">
           Type:&nbsp;
         </div>
-        <div style="cursor: pointer" @click="$emit('getLocations',{type:location.type})">
-          {{ location.type }}
-        </div>
+        <router-link class="text-decoration-none"
+                     :class="$vuetify.theme.dark?'white--text':'text--secondary'"
+                     :to="{query:{...this.$route.query,type:location.type}}">
+          <div style="cursor: pointer">
+            {{ location.type }}
+          </div>
+        </router-link>
       </v-row>
       <v-row class="mt-4 mx-0">
         <div class=" text-subtitle-2">
           Dimension:&nbsp;
         </div>
-        <div style="cursor: pointer" @click="$emit('getLocations',{dimension:location.dimension})">
-          {{ location.dimension }}
-        </div>
+        <router-link class="text-decoration-none"
+                     :class="$vuetify.theme.dark?'white--text':'text--secondary'"
+                     :to="{query:{...this.$route.query,dimension:location.dimension}}">
+          <div style="cursor: pointer">
+            {{ location.dimension }}
+          </div>
+        </router-link>
       </v-row>
       <v-row class="mt-4 mx-0">
         <div class=" text-subtitle-2">

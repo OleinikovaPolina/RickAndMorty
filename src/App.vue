@@ -47,6 +47,7 @@ export default {
   methods: {
     changeTheme() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+      sessionStorage.setItem('theme', this.$vuetify.theme.dark)
     }
   }
 }

@@ -1,9 +1,6 @@
 <template>
   <v-container>
-    <v-col
-        cols="12"
-        class="px-0"
-    >
+    <v-row class="ma-0 align-stretch">
       <v-text-field
           v-model="name"
           outlined
@@ -14,13 +11,15 @@
           clear-icon="mdi-close-circle"
           :color="$vuetify.theme.dark?'white':'black'"
       >
-        <v-icon
-            slot="append"
-        >
-          mdi-magnify
-        </v-icon>
+        <v-icon slot="append"> mdi-magnify</v-icon>
       </v-text-field>
-    </v-col>
+      <div>
+        <v-btn @click="change(1)" height="100%">
+          <v-icon v-if="$vuetify.breakpoint.xs">mdi-check</v-icon>
+          {{ $vuetify.breakpoint.xs ? '' : 'Применить' }}
+        </v-btn>
+      </div>
+    </v-row>
     <template v-if="episodes.length>0 && load">
       <v-row class="my-0">
         <v-col
@@ -68,25 +67,24 @@ export default {
     name: null
   }),
   async mounted() {
-    await axios
-        .get('https://rickandmortyapi.com/api/episode')
-        .then(res => {
-          this.episodes = res.data.results
-          this.episodesInfo = res.data.info
-        })
-        .catch(() => {
-          this.episodes = []
-          this.episodesInfo = {}
-        })
-    this.load = true
+    this.page = parseInt(this.$route.query.page) || 1
+    this.name = this.$route.query.name || null
+    await this.getEpisodes()
   },
   methods: {
-    async getEpisodes() {
+    async change(page = this.page) {
+      this.$router
+          .push({query: {...this.$route.query, page: page, name: this.name || undefined}})
+          .catch(() => {
+          });
+      await this.getEpisodes()
+    },
+    async getEpisodes(page = this.page) {
       this.load = false
       await axios
           .get('https://rickandmortyapi.com/api/episode', {
             params: {
-              page: this.page,
+              page: page,
               name: this.name
             }
           })
@@ -102,18 +100,19 @@ export default {
     }
   },
   watch: {
-    page: {
-      async handler() {
-        await this.getEpisodes()
-      },
-      deep: true
+    async page() {
+      this.$router
+          .push({query: {...this.$route.query, page: this.page}})
+          .catch(() => {
+          });
+      await this.getEpisodes()
     },
-    name: {
-      async handler() {
-        this.page = 1
+    async $route(to) {
+      this.name = this.$route.query.name || null
+      if (this.page === parseInt(to.query.page) || (this.page === 1 && !parseInt(to.query.page))) {
         await this.getEpisodes()
-      },
-      deep: true
+      }
+      this.page = parseInt(to.query.page) || 1
     }
   }
 }

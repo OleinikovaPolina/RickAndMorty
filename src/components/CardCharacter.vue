@@ -45,6 +45,7 @@
             First seen in:
           </div>
           <router-link class="text-decoration-none text--primary"
+                       v-if="episodes.filter(x => x.url === character.episode[0]).length>0"
                        :to="'/episode/'+episodes.filter(x => x.url === character.episode[0])[0].id">
             <div>{{ episodes.filter(x => x.url === character.episode[0])[0].name }}</div>
           </router-link>
