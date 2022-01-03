@@ -82,6 +82,9 @@
         ></v-pagination>
       </div>
     </template>
+    <div v-else-if="networkError">
+      <NetworkError></NetworkError>
+    </div>
     <template v-else-if="locations.length===0 && load">
       <NotFound></NotFound>
     </template>
@@ -97,11 +100,13 @@
 import axios from "axios";
 import CardLocation from "../components/CardLocation";
 import NotFound from "../components/NotFound";
+import NetworkError from "../components/NetworkError";
 
 export default {
   name: "Location",
-  components: {NotFound, CardLocation},
+  components: {NotFound, NetworkError, CardLocation},
   data: () => ({
+    networkError: false,
     locations: [],
     locationsInfo: {},
     load: false,
@@ -133,9 +138,14 @@ export default {
             this.locations = res.data.results
             this.locationsInfo = res.data.info
           })
-          .catch(() => {
+          .catch((err) => {
             this.locations = []
             this.locationsInfo = {}
+            if (!err.response) {
+              this.networkError = true
+            } else {
+              this.networkError = false
+            }
           })
       this.load = true
     },

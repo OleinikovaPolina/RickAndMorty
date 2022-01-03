@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <template v-if="load">
+    <template v-if="load && !err && !networkError">
       <Breadcrumbs :items="items"></Breadcrumbs>
       <v-card class="mx-auto mb-4">
         <v-card-title class="pb-1" style="line-height: 1.35rem;word-break: normal;">{{ location.name }}</v-card-title>
@@ -55,6 +55,12 @@
         </v-card-text>
       </v-card>
     </template>
+    <div v-else-if="err">
+      <NotFound></NotFound>
+    </div>
+    <div v-else-if="networkError">
+      <NetworkError></NetworkError>
+    </div>
     <div v-else class="text-center pt-16">
       <v-progress-circular
           indeterminate
@@ -66,11 +72,15 @@
 <script>
 import axios from "axios";
 import Breadcrumbs from "../components/Breadcrumbs";
+import NetworkError from "../components/NetworkError";
+import NotFound from "../components/NotFound";
 
 export default {
   name: "Location",
-  components: {Breadcrumbs},
+  components: {NetworkError, NotFound,Breadcrumbs},
   data: () => ({
+    err: false,
+    networkError: false,
     location: {residents: []},
     load: false,
     loadResidents: false,
@@ -113,7 +123,10 @@ export default {
           })
         })
         .catch((err) => {
-          if (err.response.status === 404) {
+          this.networkError = false
+          if (!err.response) {
+            this.networkError = true
+          } else if (err.response.status === 404) {
             this.err = true
           }
         })

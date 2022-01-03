@@ -1,4 +1,4 @@
-importScripts("https://oleinikovapolina.github.io/RickAndMorty/dist/precache-manifest.08c49e967b69b47141722e3776425444.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("https://oleinikovapolina.github.io/RickAndMorty/dist/precache-manifest.c4307054028a376eee0ead15dd31278b.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 

@@ -26,6 +26,9 @@
           ></v-pagination>
         </div>
       </template>
+      <template v-else-if="networkError">
+        <NetworkError></NetworkError>
+      </template>
       <template v-else-if="characters.length===0 && load">
         <NotFound></NotFound>
       </template>
@@ -43,10 +46,11 @@ import CardCharacter from "../components/CardCharacter"
 import FilterCharacters from "../components/FilterCharacters";
 import axios from "axios"
 import NotFound from "../components/NotFound";
+import NetworkError from "../components/NetworkError";
 
 export default {
   name: "Characters",
-  components: {NotFound, CardCharacter, FilterCharacters},
+  components: {NetworkError, NotFound, CardCharacter, FilterCharacters},
   data: () => ({
     characters: [],
     characterInfo: {},
@@ -56,7 +60,8 @@ export default {
     gender: null,
     species: null,
     name: null,
-    load: false
+    load: false,
+    networkError:false
   }),
   methods: {
     async getCharacters(page = this.page) {
@@ -74,9 +79,14 @@ export default {
             this.characters = res.data.results
             this.characterInfo = res.data.info
           })
-          .catch(() => {
+          .catch((err) => {
             this.characters = []
             this.characterInfo = {}
+            if (!err.response) {
+              this.networkError = true
+            }else {
+              this.networkError = false
+            }
           });
     },
     async activeFilter(active) {

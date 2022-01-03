@@ -7,6 +7,7 @@ import Locations from "../views/Locations"
 import Character from "../views/Character";
 import Episode from "../views/Episode";
 import Location from "../views/Location"
+import NotFound from "../components/NotFound";
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,10 @@ const routes = [
     {
         path: '/location/:id',
         component: Location
+    },
+    {
+        path: "*",
+        component: NotFound
     }
 ]
 

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <template v-if="load">
+    <template v-if="load && !err && !networkError">
       <Breadcrumbs :items="items"></Breadcrumbs>
       <v-card
           class="mx-auto mb-4"
@@ -91,6 +91,9 @@
     <div v-else-if="err">
       <NotFound></NotFound>
     </div>
+    <div v-else-if="networkError">
+      <NetworkError></NetworkError>
+    </div>
     <div v-else class="text-center pt-16">
       <v-progress-circular
           indeterminate
@@ -103,14 +106,16 @@
 import axios from "axios"
 import Breadcrumbs from "../components/Breadcrumbs"
 import NotFound from "../components/NotFound";
+import NetworkError from "../components/NetworkError";
 
 export default {
   name: "Character",
-  components: {NotFound, Breadcrumbs},
+  components: {NetworkError, NotFound, Breadcrumbs},
   data: () => ({
     load: false,
     character: {},
-    err:false,
+    err: false,
+    networkError: false,
     items: [
       {
         text: 'Characters',
@@ -127,14 +132,16 @@ export default {
           this.episodes = res.data.results
           t = res.data.info.pages
         })
-        .catch(() => {})
+        .catch(() => {
+        })
     for (let i = 2; i <= t; i++) {
       await axios
           .get('https://rickandmortyapi.com/api/episode/?page=' + i)
           .then(res => {
             this.episodes = this.episodes.concat(res.data.results)
           })
-          .catch(() => {})
+          .catch(() => {
+          })
     }
     await axios
         .get('https://rickandmortyapi.com/api/character/' + this.$route.params.id)
@@ -147,7 +154,10 @@ export default {
           })
         })
         .catch((err) => {
-          if (err.response.status === 404) {
+          this.networkError = false
+          if (!err.response) {
+            this.networkError = true
+          } else if (err.response.status === 404) {
             this.err = true
           }
         })

@@ -12,6 +12,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/img/Multiverse.2a2c98d2.jpg"
   },
   {
+    "revision": "fe1263fcd139c175ca850bb4f6de5d8f",
+    "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/img/fwasw.fe1263fc.jpg"
+  },
+  {
     "revision": "3b495477379a7cc3fb572ec96e030b2c",
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/img/not.3b495477.jpg"
   },
@@ -20,12 +24,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/img/rick.82b8707f.jpg"
   },
   {
-    "revision": "c2e85abf20abe7134e2ec3c5010f71ac",
+    "revision": "08588ac95f6902ac11679a1655ed7a86",
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/index.html"
   },
   {
-    "revision": "4c09a9309b5098e6cc2c",
-    "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/js/app.51207cf8.js"
+    "revision": "90a7b473cc530117eeee",
+    "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/js/app.0ad0d23e.js"
   },
   {
     "revision": "1a54ee5d8c557997f028",
