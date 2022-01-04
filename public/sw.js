@@ -1,3 +1,5 @@
+workbox.core.setCacheNameDetails({prefix: "rick"});
+
 self.addEventListener('fetch', event => {
     if (event.request.method === 'GET') return event.respondWith(networkFirst(event.request));
 });
@@ -12,3 +14,6 @@ async function networkFirst(req) {
         return cache.match(req)
     }
 }
+
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

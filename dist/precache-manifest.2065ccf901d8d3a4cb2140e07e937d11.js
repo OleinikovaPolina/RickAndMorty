@@ -48,7 +48,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/manifest.json"
   },
   {
-    "revision": "43394ffdcc5a4357667e859d0d0b369e",
+    "revision": "3481877a440b90cdd3b7825cc9933890",
     "url": "https://oleinikovapolina.github.io/RickAndMorty/dist/sw.js"
   }
 ]);
