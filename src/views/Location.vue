@@ -77,7 +77,7 @@ import NotFound from "../components/NotFound";
 
 export default {
   name: "Location",
-  components: {NetworkError, NotFound,Breadcrumbs},
+  components: {NetworkError, NotFound, Breadcrumbs},
   data: () => ({
     err: false,
     networkError: false,
@@ -99,14 +99,18 @@ export default {
       this.showResidents = !this.showResidents
       if (!this.startLoadResidents) {
         this.startLoadResidents = true
+        let allId = []
         for (let i = 0; i < this.location.residents.length; i++) {
-          await axios
-              .get(this.location.residents[i])
-              .then(res => {
-                this.location.residents[i] = {url: this.location.residents[i], name: res.data.name, id: res.data.id}
-              })
-              .catch(() => {})
+          let oneId = this.location.residents[i].split('/')
+          allId.push(oneId[oneId.length - 1])
         }
+        await axios
+            .get('https://rickandmortyapi.com/api/character/' + allId.join())
+            .then(res => {
+              this.location.residents = res.data
+            })
+            .catch(() => {
+            })
         this.loadResidents = true
       }
     }

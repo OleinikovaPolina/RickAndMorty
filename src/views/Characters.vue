@@ -105,22 +105,14 @@ export default {
     }
   },
   async mounted() {
-    let t = 1
+    let allId = Array.from({length: 51}, (v, k) => k + 1).join()
     await axios
-        .get('https://rickandmortyapi.com/api/episode/?page=1')
+        .get('https://rickandmortyapi.com/api/episode/' + allId)
         .then(res => {
-          this.episodes = res.data.results
-          t = res.data.info.pages
-        });
-    for (let i = 2; i <= t; i++) {
-      await axios
-          .get('https://rickandmortyapi.com/api/episode/?page=' + i)
-          .then(res => {
-            this.episodes = this.episodes.concat(res.data.results)
-          })
-          .catch(() => {
-          })
-    }
+          this.episodes = res.data
+        })
+        .catch(() => {
+        })
     this.update()
     this.page = parseInt(this.$route.query.page) || 1
     this.load = true

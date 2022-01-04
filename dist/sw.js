@@ -1,14 +1,4 @@
-importScripts("https://oleinikovapolina.github.io/RickAndMorty/dist/precache-manifest.c4307054028a376eee0ead15dd31278b.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
-
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
-
-workbox.core.setCacheNameDetails({prefix: "rick"});
-
-self.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'SKIP_WAITING') {
-        self.skipWaiting();
-    }
-});
+importScripts("https://oleinikovapolina.github.io/RickAndMorty/dist/precache-manifest.5a862a1c1deff35d895802834bdf5527.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 self.addEventListener('fetch', event => {
     if (event.request.method === 'GET') return event.respondWith(networkFirst(event.request));
@@ -24,10 +14,3 @@ async function networkFirst(req) {
         return cache.match(req)
     }
 }
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

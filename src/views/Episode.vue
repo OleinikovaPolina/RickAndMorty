@@ -99,14 +99,18 @@ export default {
       this.showCharacters = !this.showCharacters
       if (!this.startLoadCharacters) {
         this.startLoadCharacters = true
+        let allId = []
         for (let i = 0; i < this.episode.characters.length; i++) {
-          await axios
-              .get(this.episode.characters[i])
-              .then(res => {
-                this.episode.characters[i] = {url: this.episode.characters[i], name: res.data.name, id: res.data.id}
-              })
-              .catch(() => {})
+          let oneId = this.episode.characters[i].split('/')
+          allId.push(oneId[oneId.length - 1])
         }
+        await axios
+            .get('https://rickandmortyapi.com/api/character/' + allId.join())
+            .then(res => {
+              this.episode.characters = res.data
+            })
+            .catch(() => {
+            })
         this.loadCharacters = true
       }
     }
