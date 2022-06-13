@@ -8,7 +8,7 @@
   </a>
   <h3 align="center">Rick and Morty</h3>
   <p align="center">
-    App showing information about the series Rick and Morty
+    👨‍🔬🦹‍♂️ App showing information about the series Rick and Morty
     <br />
     <br />
     <a href="https://oleinikovapolina.github.io/RickAndMorty/dist/#/">View Demo</a>
@@ -45,8 +45,8 @@
 * pwa
 
 <div class="d-flex">
-    <img src="images/img_2.png" alt="..." width="50%">
-    <img src="images/img_3.png" alt="..." width="50%">
+    <img src="images/img_2.png" alt="..." width="57%">
+    <img src="images/img_3.png" alt="..." width="41.5%">
 </div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
